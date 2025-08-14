@@ -1,3 +1,8 @@
+variable "resource_group_name" {
+  description = "The name of the resource group."
+  type        = string
+}
+
 variable "region" {
   description = "The deployment's region."
   type        = string
@@ -36,5 +41,18 @@ variable "key_vault_specs" {
     public_network_access_enabled = optional(bool, true)
     purge_protection_enabled      = optional(bool, false)
     soft_delete_retention_days    = optional(number, 7)
+  })
+}
+
+variable "vnet_specs" {
+  description = <<EOT
+    vnet_specs = {
+        name:           String. The Virtual Network name.
+        addres_space:   String. The Virtual Network address space.
+    }
+  EOT
+  type = object({
+    name          = string
+    address_space = string
   })
 }
