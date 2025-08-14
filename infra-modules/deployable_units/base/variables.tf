@@ -48,7 +48,7 @@ variable "vnet_specs" {
   description = <<EOT
     vnet_specs = {
         name:           String. The Virtual Network name.
-        addres_space:   String. The Virtual Network address space.
+        address_space:  String. The Virtual Network address space.
     }
   EOT
   type = object({
