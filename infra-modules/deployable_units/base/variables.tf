@@ -73,3 +73,16 @@ variable "acr_specs" {
     public_access_enabled      = optional(bool, true)
   })
 }
+
+variable "kubernetes_subnet_specs" {
+  description = <<EOT
+    kubernetes_subnet_specs = {
+      name:             String. The subnet's name.
+      address_prefixes: String. The subnet's CIDR.
+    }
+  EOT
+  type = object({
+    name             = string
+    address_prefixes = string
+  })
+}
