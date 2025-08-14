@@ -56,3 +56,20 @@ variable "vnet_specs" {
     address_space = string
   })
 }
+
+variable "acr_specs" {
+  description = <<EOT
+    acr_specs = {
+        name:   String. The ACR's name.
+        sku:    String. The SKU of the Container Registry. Accepted values are Basic, Standard and Premium. Defaults to Standard.
+        network_rule_bypass_option: String. Whether to allow trusted Azure services to access the Container Registry. Possible values are None and AzureServices. Defaults to None.
+        public_access_enabled:      Bool. Whether to allow public access to the container registry. Defaults to true.
+    }
+  EOT
+  type = object({
+    name                       = string
+    sku                        = optional(string, "Standard")
+    network_rule_bypass_option = optional(string, "None")
+    public_access_enabled      = optional(bool, true)
+  })
+}
